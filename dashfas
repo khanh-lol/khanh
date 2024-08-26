@@ -1,0 +1,1209 @@
+
+-- Variables
+--cant change player
+local spamEnabled = false
+local spamEnabled3 = false --hour
+local spamEnabled1 = false -- myopic
+local spamEnabled2 = false -- fog
+
+--can change player
+local isExecuting = false -- blind
+local defaultMessage = "all"
+local isExecuting2 = false -- fly
+local defaultMessage2 = "all"
+local isExecuting3 = false -- clearinv,bkit
+local defaultMessage3 = "rest"
+local isExecuting5 = false -- width
+local defaultMessage5 = "all"
+local isExecuting6 = false -- rat,giant
+local defaultMessage6 = "all"
+local isExecuting7 = false -- name
+local defaultMessage7 = "all"
+local isExecuting8 = false -- invisible
+local defaultMessage8 = "all"
+local isExecuting9 = false -- mute
+local defaultMessage9 = "all"
+local isExecuting10 = false -- fire
+local defaultMessage10 = "all"
+local isExecuting11 = false -- smoke
+local defaultMessage11 = "all"
+local isExecuting12 = false -- ff
+local defaultMessage12 = "all"
+local isExecuting14 = false -- freeze
+local defaultMessage14 = "all"
+
+
+
+
+
+
+
+
+--ANTI TAB
+local antiFreezeEnabled = false
+local antiBlindEnabled = false
+local antienlighten = false
+local isListening = false --anti joinxl and joinvc
+
+
+--Crash tab
+local isExecuting4 = false
+local defaultMessage4 = "rest"
+--spam command
+local chatMessage = ""
+local executorEnabled = false
+local spamSpeed = 0.01
+
+--Build Tab
+
+
+local isBuilding = false
+local buildInterval = 0.1 -- Interval in seconds between each block placement
+local toggleState = false -- auto change color
+
+-- Function
+
+--Troll Tab
+-- cant change player  
+local function spamChat()
+    while spamEnabled do
+        game.Players:Chat("hour 12")
+        Wait(0.25)
+        game.Players:Chat("hour 1")
+        wait(0.25) -- Adjust the delay to control the speed of the spam
+    end
+end
+
+local function spamChat3()
+    while spamEnabled3 do
+        game.Players:Chat("colorless")
+        Wait(0.25)
+        game.Players:Chat("colorful")
+        wait(0.25) -- Adjust the delay to control the speed of the spam
+    end
+end
+
+local function spamChat1()
+    while spamEnabled1 do
+        game.Players:Chat("myopic")
+        Wait(0.25)
+        game.Players:Chat("unmyopic")
+        wait(0.25) -- Adjust the delay to control the speed of the spam
+    end
+end
+
+--Can change player
+
+local function ExecuteChatCommands(message)
+    while isExecuting do
+        local player = game.Players
+
+        -- Execute the "fly" command
+        local flyMessage = "fly " .. message .. ""
+        player:Chat(flyMessage)
+        wait(0.25)  -- Adjust delay as needed
+
+        -- Execute the "unfly" command
+        local unflyMessage = "unfly " .. message .. ""
+        player:Chat(unflyMessage)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+
+
+
+
+local function ExecuteChatCommands2(message)
+    while isExecuting2 do
+        local player = game.Players
+        local blindMessage = "Blind " .. message .. ""
+        player:Chat(blindMessage)
+        wait(0.25)  -- Adjust delay as needed
+        local unblindMessage = "Unblind " .. message .. ""
+        player:Chat(unblindMessage)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+local function ExecuteChatCommands3(message)
+    while isExecuting3 do
+        local player = game.Players
+        local clearinvMessage = "clearinv " .. message .. ""
+        player:Chat(clearinvMessage)
+        wait(0.25)  -- Adjust delay as needed
+        local bkit2Message = "bkit " .. message .. ""
+        player:Chat(bkit2Message)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+local function ExecuteChatCommands5(message)
+    while isExecuting5 do
+        local player = game.Players
+        local widthMessage = "width " .. message .. " 5"
+        player:Chat(widthMessage)
+        wait(0.25)  -- Adjust delay as needed
+        local width2Message = "width " .. message .. " 1"
+        player:Chat(width2Message)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+local function ExecuteChatCommands6(message)
+    while isExecuting6 do
+        local player = game.Players
+        local ratMessage = "rat " .. message .. ""
+        player:Chat(ratMessage)
+        wait(0.25)  -- Adjust delay as needed
+        local giantMessage = "giant " .. message .. ""
+        player:Chat(giantMessage)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+local function ExecuteChatCommands7(message)
+    while isExecuting7 do
+        local player = game.Players
+        local nameMessage = "name " .. message .. " gdflkghdfjgldfjgdfifdjgpdfghsfd"
+        player:Chat(nameMessage)
+        wait(0.25)  -- Adjust delay as needed
+        local name2Message = "name " .. message .. " a"
+        player:Chat(name2Message)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+local function ExecuteChatCommands8(message)
+    while isExecuting8 do
+        local player = game.Players
+        local invisibleMessage = "invisible " .. message .. ""
+        player:Chat(invisibleMessage)
+        wait(0.25)  -- Adjust delay as needed
+        local visibleMessage = "visible " .. message .. ""
+        player:Chat(visibleMessage)
+        wait(0.25)  -- Adjust delay as needed before the next loop
+    end
+end
+
+
+
+
+
+
+
+
+--Crash Tab
+
+local function ExecuteChatCommands4(message)
+    while isExecuting4 do
+        local player = game.Players
+        local bkitbMessage = "bkit " .. message .. ""
+        player:Chat(bkitbMessage)
+        wait(0.001)  -- Adjust delay as needed
+    end
+end
+local function EquipLightsahTools()
+    while isEquipping do
+        local player = game.Players.LocalPlayer
+        local backpack = player:WaitForChild("Backpack")
+        local tools = backpack:GetChildren()  -- Get all tools in the backpack
+
+        for _, tool in ipairs(tools) do
+            if tool:IsA("Tool") and tool.Name == "IvoryPeriastron" then  -- Only equip tools named "lightsah"
+                if player.Character and player.Character:FindFirstChild("Humanoid") then
+                    player.Character.Humanoid:EquipTool(tool)
+                    wait(0.01)  -- Adjust the delay as needed
+                end
+            end
+        end
+        
+        wait(0.01)  -- Wait before starting the next round
+    end
+end
+
+--ANTI TAB
+
+local function monitorFreeze()
+    while antiFreezeEnabled do
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("Hielo") then
+            game.Players:Chat("unfreeze me")
+            wait(5) -- Prevent spamming; wait before checking again
+        end
+        wait(0.1) -- Check every 0.1 seconds
+    end
+end
+
+local function noenlighten()
+    while antienlighten do
+        local character = game.Workspace
+        if character and Workspace:FindFirstChild("The Arkenstone") then
+            game.Players:Chat("debug")
+            wait(0.1) -- Prevent spamming wait before checking again
+        end
+        wait(0.1) -- Check every 0.1 seconds
+    end
+end
+
+
+local function antiBlind()
+    while antiBlindEnabled do
+        local player = game.Players.LocalPlayer
+        if player and player:FindFirstChild("PlayerGui") then
+            local playerGui = player.PlayerGui
+            for _, gui in pairs(playerGui:GetChildren()) do
+                if gui:IsA("ScreenGui") or gui:IsA("ImageLabel") then
+                    -- Check if the GUI element is likely a blinding effect
+                    if gui.Name:lower():find("blind") or gui.Name:lower():find("flashbang") then
+                        gui:Destroy()
+                        print("Removed blind effect: " .. gui.Name)
+                    end
+                end
+            end
+        end
+        wait(0.1) -- Check every 0.1 seconds
+    end
+end
+
+local function onChatMessage(player, message)
+    local triggerWords = {
+        "joinxl", ";joinxl", "Joinxl", ";Joinxl",
+        "joinvc", ";joinvc", "Joinvc", ";Joinvc"
+    }
+    local lowerMessage = string.lower(message)
+
+    for _, trigger in ipairs(triggerWords) do
+        if lowerMessage == string.lower(trigger) then
+            wait(0.0001)  -- Add a delay before executing the command
+            local command = "r6 " .. player.Name .. ""
+            game.Players:Chat(command)
+            wait(0.0001)
+            game.Players:Chat(command)
+            wait(0.0001)
+            game.Players:Chat(command)
+            wait(0.0001)
+            game.Players:Chat(command)
+            game.Players:Chat(command)
+            wait(0.0001)
+            game.Players:Chat(command)
+            wait(0.0001)
+            game.Players:Chat(command)
+            wait(0.0001)
+            game.Players:Chat(command)
+            break
+        end
+    end
+end
+
+-- Start listening to chat
+local function startListening()
+    local players = game:GetService("Players")
+
+    players.PlayerAdded:Connect(function(player)
+        player.Chatted:Connect(function(message)
+            if isListening then
+                onChatMessage(player, message)
+            end
+        end)
+    end)
+
+    for _, player in ipairs(players:GetPlayers()) do
+        player.Chatted:Connect(function(message)
+            if isListening then
+                onChatMessage(player, message)
+            end
+        end)
+    end
+end
+
+
+--SPAM COMMAND TAB
+
+local function executeChatMessage()
+    while executorEnabled do
+        if chatMessage ~= "" then
+            local player = game.Players
+            if player then
+                local success, err = pcall(function()
+                    -- Attempt to send chat message
+                    player:Chat(chatMessage)  -- Send message using LocalPlayer's Chat method
+                end)
+                
+                if success then
+                    print("Executed chat command: " .. chatMessage)
+                else
+                    warn("Error sending chat message: " .. err)
+                end
+            end
+            wait(spamSpeed) -- Use the speed set in the text box
+        end
+        wait(0.01) -- Check every 0.1 seconds
+    end
+end
+
+--gears tab
+
+local function EquipAllTools()
+    while isEquipping do
+        local player = game.Players.LocalPlayer
+        local backpack = player:WaitForChild("Backpack")
+        local tools = backpack:GetChildren()  -- Get all tools in the backpack
+
+        for _, tool in ipairs(tools) do
+            if tool:IsA("Tool") then  -- Equip any tool
+                if player.Character and player.Character:FindFirstChild("Humanoid") then
+                    player.Character.Humanoid:EquipTool(tool)
+                    wait(0.01)  -- Adjust the delay as needed
+                end
+            end
+        end
+        
+        wait(0.01)  -- Wait before starting the next round
+    end
+end
+
+--Build Tab
+
+
+
+local function waitForCharacter()
+    local player = game.Players.LocalPlayer
+    while not player.Character or not player.Character:FindFirstChild("Head") do
+        wait()
+    end
+end
+
+-- Function to auto-build blocks above the player's head
+local function autoBuild()
+    while isBuilding do
+        waitForCharacter() -- Ensure the character is loaded
+        local player = game.Players.LocalPlayer
+        local head = workspace:FindFirstChild(player.Name) and workspace[player.Name]:FindFirstChild("Head")
+        
+        if head then
+            -- Position the block slightly above the head
+            local position = head.Position + Vector3.new(0, 5, 0) -- Adjust height as needed
+            local args = {
+                [1] = position, -- Position of the block
+                [2] = Enum.NormalId.Top,
+                [3] = workspace:WaitForChild("Trrain", 0.5):WaitForChild("Chunk", 0.5):WaitForChild("Mesh", 0.5),
+                [4] = Color3.new(1, 1, 1),
+                [5] = "Smooth"
+            }
+
+            -- Get the "Build" remote with a timeout
+            local buildRemote = game.Players.LocalPlayer.Backpack:WaitForChild("Events", 0.5)
+            if buildRemote then
+                -- Fire the remote event with the provided arguments
+                buildRemote:FireServer(unpack(args))
+            end
+        end
+        wait(buildInterval) -- Wait before building the next block
+    end
+end
+
+local function getNil(name, class)
+    for _, v in next, getnilinstances() do
+        if v.ClassName == class and v.Name == name then
+            return v
+        end
+    end
+end
+
+-- Function to delete surrounding blocks named "Cube"
+local function deleteSurroundingBlocks(radius)
+    local player = game.Players.LocalPlayer
+    local character = Workspace[player.Name]
+
+    -- Wait for the "Head" part with a timeout to avoid infinite yield
+    local head = character:FindFirstChild("Head")
+    if not head then
+        head = character:WaitForChild("Head", 0.01)
+        if not head then
+            warn("Character does not have a Head after waiting for 5 seconds.")
+            return
+        end
+    end
+
+    local position = head.Position
+
+    for _, part in ipairs(workspace:GetDescendants()) do
+        if part:IsA("Part") or part:IsA("MeshPart") then
+            if part.Name == "Cube" then  -- Only target blocks named "Cube"
+                local distance = (part.Position - position).Magnitude
+                if distance <= radius then
+                    -- Prepare the arguments to delete the part
+                    local args = {
+                        [1] = part.Position,
+                        [2] = Enum.NormalId.Top,
+                        [3] = part, -- Target part to delete
+                        [4] = Color3.new(1, 0, 0), -- This could be any color since we're deleting
+                        [5] = "Smooth" -- Assuming this is necessary for the deletion event
+                    }
+                    -- Wait for the "Events" remote with a timeout
+                    local events = player.Backpack:WaitForChild("Events", 0.01)
+                    if events then
+                        events:FireServer(unpack(args))
+                        return
+                    end
+                end
+            end
+        end
+    end
+end
+
+-- Toggle state to control auto block deletion
+local autoDeleteEnabled = false
+
+-- Function to continuously check and delete blocks when auto-delete is enabled
+local function autoDeleteLoop()
+    while autoDeleteEnabled do
+        deleteSurroundingBlocks(10) -- Adjust the radius as needed
+        wait(0.01) -- Adjust the delay between checks as needed
+    end
+end
+
+local function executeScript()
+    local function teleportToCoordinates()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local rootPart = character:WaitForChild("HumanoidRootPart")
+
+        -- Desired coordinates
+        local targetPosition = Vector3.new(-116.36695861816406, 3.149998903274536, 116.2099838256836)
+
+        -- Teleport the player to the target position
+        rootPart.CFrame = CFrame.new(targetPosition)
+    end
+
+    -- Execute the teleport function immediately
+    teleportToCoordinates()
+
+    local colors = {
+        Color3.new(1, 1, 1), -- White
+        Color3.new(0.125490203499794, 0.125490203499794, 0.125490203499794), -- Dark Grey
+        Color3.new(0.7686274647712708, 0.1568627506494522, 0.10980392247438431), -- Red-Brown
+        Color3.new(0.8549019694328308, 0.5215686559677124, 0.2549019753932953), -- Light Brown
+        Color3.new(0.9607843160629272, 0.8039215803146362, 0.1882352977991104), -- Yellow
+        Color3.new(0.29411765933036804, 0.5921568870544434, 0.29411765933036804), -- Green
+        Color3.new(0.03529411926865578, 0.5372549295425415, 0.8117647171020508), -- Blue
+        Color3.new(1, 0, 1) -- Magenta
+    }
+
+    local positions = {
+        Vector3.new(-118.75248718261719, 0, 117.85556030273438),
+        Vector3.new(-118.68824768066406, 0, 118.33940124511719),
+        Vector3.new(-116.8637466430664, 0, 117.82411193847656),
+        Vector3.new(-118.22989654541016, 0, 109.48792266845703),
+        Vector3.new(-115.10047912597656, 0, 112.48961639404297),
+        Vector3.new(-115.54031372070312, 0, 118.94852447509766),
+        Vector3.new(-114.27776336669922, 0, 118.74200439453125),
+        Vector3.new(-115.26776123046875, 0, 117.41168975830078)
+    }
+
+    local event = game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Events", 5)
+    if not event then
+        warn("Events remote not found in time.")
+        return
+    end
+
+    local index = 1
+    while wait(0.5) do
+        if index > #positions then
+            index = 1
+        end
+
+        local pos = positions[index]
+        local color = colors[index] or Color3.new(1, 1, 1)  -- Default to white if color is not found
+
+        local args = {
+            [1] = pos,
+            [2] = Enum.NormalId.Top,
+            [3] = workspace:WaitForChild("Trrain"):WaitForChild("Chunk"):WaitForChild("Mesh"),
+            [4] = color,
+            [5] = "Smooth"
+        }
+
+        event:FireServer(unpack(args))
+        index = index + 1
+    end
+end
+
+
+--Gui lua
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/khanh-lol/khanh/main/gui%20lua')))()
+local Window = OrionLib:MakeWindow({Name = "K's TCO", HidePremium = false, SaveConfig = true, ConfigFolder = "THE CHOSEN ONE"})
+
+--NOTIFICATION
+
+
+OrionLib:MakeNotification({
+	Name = "Hi!!!",
+	Content = "Thx for use my script^^",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+OrionLib:MakeNotification({
+	Name = "Credit",
+	Content = "@IMH4CK_HEHE(ROBLOX)",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+
+-- gears tab
+
+local Tab = Window:MakeTab({
+	Name = "Gears",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddButton({
+	Name = "Op gears !",
+	Callback = function()
+      	game.Players:Chat("gear me 127506257")
+wait(0.3)
+game.Players:Chat("gear me 26777410")
+wait(0.3)
+game.Players:Chat("gear me 1103011681")
+wait(0.3)
+game.Players:Chat("gear me 106064277")
+wait(0.3)
+game.Players:Chat("gear me 123234673")
+wait(0.3)
+game.Players:Chat("gear me 24839406")
+wait(0.3)
+game.Players:Chat("gear me 71037101")
+wait(0.3)
+game.Players:Chat("gear me 82357101")
+wait(0.3)
+game.Players:Chat("gear me 25162389")
+wait(0.3)
+game.Players:Chat("gear me 99119240")
+wait(0.3)
+game.Players:Chat("gear me 125013830")
+wait(0.3)
+game.Players:Chat("gear me 64869947")	
+  	end    
+})	
+
+Tab:AddButton({
+	Name = "Gears can kill ff",
+	Callback = function()
+      	game.Players:Chat("gear me 68539623")
+wait(0.3)
+game.Players:Chat("gear me 48596324")
+wait(0.3)
+game.Players:Chat("gear me 45177979")	
+  	end    
+})
+
+Tab:AddButton({
+	Name = "All Op sword !",
+	Callback = function()
+        game.Players:Chat("gear me 159229806")
+wait(0.3)
+game.Players:Chat("gear me 69499437")
+wait(0.3)
+game.Players:Chat("gear me 233520275")
+wait(0.3)
+game.Players:Chat("gear me 99119240")
+wait(0.3)
+game.Players:Chat("gear me 120307951")
+wait(0.3)
+game.Players:Chat("gear me 93136802")
+wait(0.3)
+game.Players:Chat("gear me 80661504")
+wait(0.3)
+game.Players:Chat("gear me 108158379")
+wait(0.3)
+game.Players:Chat("gear me 1103011681")
+wait(0.3)
+game.Players:Chat("gear me 73829193")
+wait(0.3)
+game.Players:Chat("gear me 2544549379")
+wait(0.3)
+game.Players:Chat("gear me 139577901")
+wait(0.3)	
+  	end    
+})	
+
+Tab:AddToggle({
+    Name = "Auto Equip All Tools",
+    Default = false,
+    Callback = function(state)
+        isEquipping = state
+        if state then
+            -- Start the tool equipping loop
+            EquipAllTools()
+        end
+    end
+})
+
+Tab:AddButton({
+	Name = "Mobile key board",
+	Callback = function()
+      	loadstring(game:HttpGet("https://raw.githubusercontent.com/GGH52lan/GGH52lan/main/keyboard.txt"))()	
+  	end    
+})	
+
+Tab:AddButton({
+	Name = "nuked gear",
+	Callback = function()
+        game.Players:Chat("gear me 154727201")
+  	end    
+})	
+
+Tab:AddButton({
+	Name = "crash gear ( cant crash sever but can make low fps)",
+	Callback = function()
+        game.Players:Chat("gear me 108158379")	
+  	end    
+})	
+--troll tab
+
+local Tab = Window:MakeTab({
+	Name = "troll :)",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) 	
+  	
+--cant change player
+  
+Tab:AddToggle({
+    Name = "flash sky",
+    Default = false,
+    Callback = function(value)
+        spamEnabled = value
+        if spamEnabled then
+            spamChat()
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "1930 vs 2024",
+    Default = false,
+    Callback = function(value)
+        spamEnabled3 = value
+        if spamEnabled3 then
+            spamChat3()
+        end
+    end
+})
+
+-- can change player
+
+Tab:AddToggle({
+    Name = "Like a Block chat spam",
+    Default = false,
+    Callback = function(state)
+        isExecuting = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands(defaultMessage)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is all)",
+    Default = "all",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage = text
+    end
+})
+
+
+Tab:AddToggle({
+    Name = "flash black",
+    Default = false,
+    Callback = function(state)
+        isExecuting2 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands2(defaultMessage2)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is all)",
+    Default = "all",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage2 = text
+    end
+})
+
+
+Tab:AddToggle({
+    Name = "loop clearinv and bkit",
+    Default = false,
+    Callback = function(state)
+        isExecuting3 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands3(defaultMessage3)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is rest)",
+    Default = "rest",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage3 = text
+    end
+})
+
+Tab:AddToggle({
+    Name = "fat man",
+    Default = false,
+    Callback = function(state)
+        isExecuting5 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands5(defaultMessage5)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is all)",
+    Default = "all",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage5 = text
+    end
+})
+
+Tab:AddToggle({
+    Name = "1 --> 5 size",
+    Default = false,
+    Callback = function(state)
+        isExecuting6 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands6(defaultMessage6)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is all)",
+    Default = "all",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage6 = text
+    end
+})
+
+Tab:AddToggle({
+    Name = "dont look at name",
+    Default = false,
+    Callback = function(state)
+        isExecuting7 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands7(defaultMessage7)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is all)",
+    Default = "all",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage7 = text
+    end
+})
+
+Tab:AddToggle({
+    Name = "INVISIBLE!!!",
+    Default = false,
+    Callback = function(state)
+        isExecuting8 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands8(defaultMessage8)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is all)",
+    Default = "all",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage8 = text
+    end
+})
+
+
+
+--ANTI TAB
+
+local Tab = Window:MakeTab({
+	Name = "Anti(beta)",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) 	
+
+Tab:AddToggle({
+    Name = "Anti freeze",
+    Default = false,
+    Callback = function(value)
+        antiFreezeEnabled = value
+        if antiFreezeEnabled then
+            print("Anti-Freeze Chat Enabled")
+            monitorFreeze()
+        else
+            print("Anti-Freeze Chat Disabled")
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Anti drop enlighten(save enlighten)",
+    Default = false,
+    Callback = function(value)
+        antienlighten = value
+        if antienlighten then
+            print("Anti enlighten drop  Enabled")
+            noenlighten()
+        else
+            print("Anti enlighten drop Disabled")
+        end
+    end
+})
+
+
+Tab:AddToggle({
+    Name = "Anti Blind",
+    Default = false,
+    Callback = function(value)
+        antiBlindEnabled = value
+        if antiBlindEnabled then
+            print("Anti-Blind Enabled")
+            spawn(antiBlind) -- Spawn the function in a new thread
+        else
+            print("Anti-Blind Disabled")
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Anti who want join xl or vc sever",
+    Default = false,
+    Callback = function(state)
+        isListening = state
+        if state then
+            startListening()
+        end
+    end
+})
+
+
+--crash tab
+
+local Tab = Window:MakeTab({
+	Name = "Crash!",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) 	
+
+Tab:AddToggle({
+    Name = "crash (is take 3min use bkit)",
+    Default = false,
+    Callback = function(state)
+        isExecuting4 = state
+        if state then
+            -- Start the chat command execution loop
+            ExecuteChatCommands4(defaultMessage4)
+        end
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Enter player u want( normal is rest)",
+    Default = "rest",
+    TextDisappear = true,
+    Callback = function(text)
+        defaultMessage4 = text
+    end
+})
+
+Tab:AddToggle({
+    Name = "Auto Equip 'Crash' Tools",
+    Default = false,
+    Callback = function(state)
+        isEquipping = state
+        if state then
+            -- Start the tool equipping loop
+            EquipLightsahTools()
+        end
+    end
+})
+
+Tab:AddButton({
+	Name = "get 30+ gears crash",
+	Callback = function()
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)        
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+        Wait(0.01)
+        game.Players:Chat("gear me 108158379")
+  	end   
+})	
+
+
+--SPAM TAB
+
+local Tab = Window:MakeTab({
+	Name = "Spam Command!",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) 
+
+Tab:AddTextbox({
+    Name = "Set Command",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(value)
+        chatMessage = value
+        print("Chat message set to: " .. chatMessage)
+    end
+})
+
+Tab:AddTextbox({
+    Name = "Spam Speed (Seconds)",
+    Default = "0.01",  -- Default speed is 0.01 seconds
+    TextDisappear = true,
+    Callback = function(value)
+        local speed = tonumber(value)
+        if speed and speed > 0 then
+            spamSpeed = speed
+            print("Spam speed set to: " .. spamSpeed .. " seconds")
+        else
+            warn("Invalid speed value. Please enter a positive number.")
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Spam Command",
+    Default = false,
+    Callback = function(value)
+        executorEnabled = value
+        if executorEnabled then
+            print("Chat Executor Enabled")
+            spawn(executeChatMessage) -- Spawn the function in a new thread
+        else
+            print("Chat Executor Disabled")
+        end
+    end
+})
+
+--Build Tab
+
+local Tab = Window:MakeTab({
+    Name = "Build",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+
+
+
+Tab:AddToggle({
+    Name = "Auto Build",
+    Default = false,
+    Callback = function(state)
+        isBuilding = state
+        if state then
+            autoBuild()
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "Auto Grief",
+    Default = false,
+    Callback = function(state)
+        autoDeleteEnabled = state
+        if state then
+            spawn(autoDeleteLoop) -- Start the loop in a new thread if auto-delete is enabled
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "auto chamnge color prass",
+    Default = false,
+    Callback = function(state)
+        toggleState = state
+        if toggleState then
+            -- Start the loop if the toggle is enabled
+            executeScript()
+        end
+    end
+})
+
+
+
+OrionLib:Init() 
