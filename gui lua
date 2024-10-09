@@ -480,7 +480,7 @@ function OrionLib:MakeWindow(WindowConfig)
 	end
 	WindowConfig.IntroText = WindowConfig.IntroText or "Orion Library"
 	WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
-	WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
+	WindowConfig.ShowIcon = WindowConfig.ShowIcon or true
 	WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://7733960981"
 	WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://8834748103"
 	OrionLib.Folder = WindowConfig.ConfigFolder
